@@ -18,7 +18,7 @@ Content-Type: application/json
 ### Create New Event (Protected)
 POST http://localhost:5000/api/events
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODQzY2JjYWYyNDFkMWY4ZTQyZjlhMjMiLCJpYXQiOjE3NDkyNzU4MjksImV4cCI6MTc0OTI3OTQyOX0.bo7aycrwV7YRCc6g4KvjB5qn5DFVOtxviXTEPxR_q6U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODQzY2JjYWYyNDFkMWY4ZTQyZjlhMjMiLCJpYXQiOjE3NDkyNzY4NzYsImV4cCI6MTc0OTI4MDQ3Nn0.aKG8vokS1kBqM1xBFXOersoJdVBgr3wiyn5Pt3eObAE
 
 {
     "title": "Test Event",

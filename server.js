@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-
 require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
@@ -9,13 +8,17 @@ const eventRoutes = require("./routes/eventRoutes");
 const app = express();
 
 // Middleware
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/events", eventRoutes);
+
+// Health check route for Render
+app.get("/", (req, res) => {
+  res.json({ message: "Server is running" });
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -25,9 +28,7 @@ app.use((err, req, res, next) => {
 
 // Database connection
 mongoose
-  .connect(
-    process.env.MONGODB_URI || "mongodb://localhost:27017/appdev2-final-exam"
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
