@@ -1,0 +1,36 @@
+### Authentication Tests ###
+
+### Sign In
+POST http://localhost:5000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+
+### Event Tests ###
+
+### Get All Events (Public)
+GET http://localhost:5000/api/events
+Content-Type: application/json
+
+### Create New Event (Protected)
+POST http://localhost:5000/api/events
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODQzY2JjYWYyNDFkMWY4ZTQyZjlhMjMiLCJpYXQiOjE3NDkyNzQ1NzcsImV4cCI6MTc0OTI3ODE3N30.8OhK7ONlIiXqnlLTpbbaYHqJXZyKMprZjznii8PWyvg
+
+{
+    "title": "Test Event",
+    "location": "Test Location",
+    "date": "2025-06-07T10:00:00Z",
+    "description": "This is a test event description"
+}
+
+### Get My Events (Protected)
+GET http://localhost:5000/api/my-events
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+### Get all books
+GET http://localhost:5000/api/
