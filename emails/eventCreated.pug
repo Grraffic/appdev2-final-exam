@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    style.
+      body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+      .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+      .event-details { background-color: #f9f9f9; padding: 15px; border-radius: 5px; }
+      h1 { color: #2c3e50; }
+  body
+    .container
+      h1 Event Created Successfully!
+      .event-details
+        h2= event.title
+        p
+          strong Date: 
+          | #{new Date(event.date).toLocaleString()}
+        p
+          strong Location: 
+          | #{event.location}
+        p
+          strong Description: 
+          | #{event.description}
+      p Thank you for creating an event with us!

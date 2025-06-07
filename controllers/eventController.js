@@ -1,4 +1,6 @@
 const Event = require("../models/Event");
+const User = require("../models/User");
+const emailService = require("../services/emailService");
 
 // GET /api/events - Fetch all events (public access)
 exports.getAllEvents = async (req, res) => {
@@ -34,6 +36,18 @@ exports.createEvent = async (req, res) => {
     });
 
     await event.save();
+
+    // Get user details for email
+    const user = await User.findById(req.user.userId);
+
+    // Send confirmation email
+    try {
+      await emailService.sendEventConfirmation(user, event);
+    } catch (emailError) {
+      console.error("Failed to send confirmation email:", emailError);
+      // Don't return the error to client as the event was created successfully
+    }
+
     res.status(201).json(event);
   } catch (error) {
     console.error(error);
